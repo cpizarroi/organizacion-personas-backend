@@ -21,9 +21,11 @@ export class PersonasController {
 
   // Crear una nueva persona
   @Post()
-  create(@Body() data: Partial<Persona>): Promise<Persona> {
+  async create(@Body() data: Partial<Persona>): Promise<Persona> {
+    console.log('Datos recibidos para crear persona:', data); // Verifica los datos que llegan al backend
     return this.personasService.create(data);
   }
+  
 
   /*// Actualizar una persona existente
   @Put(':id')

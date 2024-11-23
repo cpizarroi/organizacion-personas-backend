@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AreasModule } from './areas/areas.module';
 import { PersonasModule } from './personas/personas.module';
 import { Area } from './entities/area.entity';
 import { Persona } from './entities/persona.entity';
+import { CorsMiddleware } from '@nest-middlewares/cors';
 
 @Module({
   imports: [
@@ -31,4 +32,10 @@ import { Persona } from './entities/persona.entity';
     PersonasModule,
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(CorsMiddleware)
+      .forRoutes('*'); // Aplica CORS a todas las rutas
+  }
+}

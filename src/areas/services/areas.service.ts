@@ -62,4 +62,4 @@ export class AreasService {
         `No se encontró el área con ID ${id} para eliminar.`,
     }
   }*/
-}
+
