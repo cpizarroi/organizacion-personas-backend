@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { ConflictException, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Persona } from "../../entities/persona.entity";
@@ -33,8 +33,12 @@ export class PersonasService {
 
   // Crear una persona
   async create(data: Partial<Persona>): Promise<Persona> {
+    const existing = await this.personaRepository.findOne({ where: { correo: data.correo } });
+    if (existing) {
+      throw new ConflictException('El correo ya está registrado.');
+    }
     const persona = this.personaRepository.create(data);
-    const savedPersona = await this.personaRepository.save(persona);
-    return savedPersona;
+    return this.personaRepository.save(persona);
   }
+  
 }
