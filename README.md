@@ -10,8 +10,8 @@ Organización de Personas es una aplicación diseñada para registrar a personas
 
 ## Requisitos
 - Node.js (v20.3.1)
-- MySQL (versión X.X.X)
-- npm (versión X.X.X)
+- MySQL (v8.0)
+- npm (v10.8.2)
 
 ## Instalación
 1. Clona este repositorio:
