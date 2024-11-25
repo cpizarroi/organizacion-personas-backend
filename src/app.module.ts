@@ -10,10 +10,13 @@ import { CorsMiddleware } from '@nest-middlewares/cors';
 
 @Module({
   imports: [
+    // Configuración global de entorno
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env',
+      envFilePath: '.env', // Archivo con las variables de entorno
     }),
+
+    // Configuración de la base de datos
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -24,18 +27,21 @@ import { CorsMiddleware } from '@nest-middlewares/cors';
         username: configService.get('DATABASE_USERNAME'),
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_NAME'),
-        entities: [Area, Persona],
-        synchronize: true,
+        entities: [Area, Persona],  // Entidades usadas en la base de datos
+        synchronize: true,  // Sincroniza la base de datos automáticamente
       }),
     }),
+
+    // Módulos importados
     AreasModule,
     PersonasModule,
   ],
 })
 export class AppModule implements NestModule {
+  // Configura el middleware para CORS
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(CorsMiddleware)
+      .apply(CorsMiddleware)  // Aplica el middleware CORS
       .forRoutes('*'); // Aplica CORS a todas las rutas
   }
 }

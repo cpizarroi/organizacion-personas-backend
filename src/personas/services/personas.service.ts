@@ -14,7 +14,7 @@ export class PersonasService {
   // Obtener todas las personas, incluyendo la relación con el área
   async findAll(): Promise<Persona[]> {
     const personas = await this.personaRepository.find({
-      relations: ['area'],  
+      relations: ['area'],  // Relaciona con la entidad Area
     });
     return personas;
   }
@@ -23,10 +23,10 @@ export class PersonasService {
   async findOne(id: number): Promise<Persona> {
     const persona = await this.personaRepository.findOne({
       where: { id },
-      relations: ['area'],  
+      relations: ['area'],  // Relaciona con la entidad Area
     });
     if (!persona) {
-      throw new NotFoundException(`Persona con ID ${id} no encontrada.`);
+      throw new NotFoundException(`Persona con ID ${id} no encontrada.`);  // Si no se encuentra la persona
     }
     return persona;
   }
@@ -35,10 +35,9 @@ export class PersonasService {
   async create(data: Partial<Persona>): Promise<Persona> {
     const existing = await this.personaRepository.findOne({ where: { correo: data.correo } });
     if (existing) {
-      throw new ConflictException('El correo ya está registrado.');
+      throw new ConflictException('El correo ya está registrado.');  // Verifica si el correo ya está registrado
     }
     const persona = this.personaRepository.create(data);
-    return this.personaRepository.save(persona);
+    return this.personaRepository.save(persona);  // Guarda la nueva persona
   }
-  
 }
