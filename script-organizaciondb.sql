@@ -36,3 +36,8 @@ INSERT INTO personas (id, nombre, correo, area_id) VALUES
     ('Carola Carrasco', 'carola.carrasco@gmail.com', 5),
     ('Diego Meneses', 'diego.meneses@gmail.com', 4),
     ('Paula Andrades', 'paula.andrades@gmail.com', 6);
+    ('Alexis Fierro', 'alexis.fierro@gmail.com,' 2);
+    ('Ariel Torres', 'arieltorres@gmail.com', 6);
+    ('Karen Quezada', 'karen@gmail', 2);
+    ('Jaime Madariaga', 'jaime.madariaga@gmail.com' 1);
+    ('Daniela Canales', 'danielacanales@gmail.com' 4);
