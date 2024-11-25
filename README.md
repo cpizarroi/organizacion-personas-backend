@@ -16,7 +16,7 @@ Organización de Personas es una aplicación diseñada para registrar a personas
 ## Instalación
 1. Clona este repositorio:
     ```sh
-    git clone https://github.com/tu-usuario/organizacion-de-personas.git
+    git clone https://github.com/cpizarroi/organizacion-personas-backend
     ```
 2. Navega al directorio del proyecto:
     ```sh
