@@ -63,7 +63,7 @@ Las pruebas unitarias se realizan utilizando [Jest](https://jestjs.io/).
 
 ### Ejecución de Pruebas
 Para ejecutar las pruebas unitarias, utiliza el siguiente comando:
-    ```sh
+    ```
     npm test
     ```
 
